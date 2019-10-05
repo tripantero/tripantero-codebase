@@ -20,8 +20,6 @@ module.exports.app = app;
 app.use(require('lasso/middleware').serveStatic());
 
 require('./controllers/controller').Caller();
-
-
 require('./socket').apply(http);
 
 Server.listen(process.env.PORT || 6007, ()=>{
