@@ -4,15 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "flow": "flow"
+    "start": "node sources/server",
+    "flow": "flow",
+    "build": "./node_modules/.bin/flow-remove-types  types/ --out-dir sources/ "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "flow-remove-types": "^2.109.0",
-    "forever": "^1.0.0",
     "morgan": "^1.9.1"
   },
   "dependencies": {
@@ -20,9 +19,12 @@
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
-    "joi": "^14.3.1",
     "jwt-simple": "^0.5.6",
+    "lasso": "^3.3.1",
+    "lasso-marko": "^2.4.8",
+    "marko": "^4.18.14",
     "phin": "^3.4.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "tschema": "^1.1.0"
   }
 }
