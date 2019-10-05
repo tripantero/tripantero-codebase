@@ -4,9 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node sources/server",
-    "flow": "flow",
-    "build": "./node_modules/.bin/flow-remove-types  types/ --out-dir sources/ "
+    "start": "node app"
   },
   "keywords": [],
   "author": "",
