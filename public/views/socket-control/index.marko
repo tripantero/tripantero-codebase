@@ -1,14 +1,15 @@
 class {   
     onMount(){
-        let script = document.createElement('script');
-        script.src = "/js/socket.io.js";
-        script.type = "text/javascript";
-        document.getElementsByTagName('head')[0].appendChild(script);
+        let scriptLoader = (path) => {
+            let script = document.createElement('script');
+            script.src = path;
+            script.type = "text/javascript";
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+        
 
-        script = document.createElement('script');
-        script.src = "/js/socket.event.js";
-        script.type = "text/javascript";
-        document.getElementsByTagName('head')[0].appendChild(script);
+        scriptLoader("/js/socket.io.js");
+        scriptLoader("/js/socket.event.js")
     }
 }
 
