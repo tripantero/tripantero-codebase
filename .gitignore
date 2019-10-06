@@ -1,5 +1,3 @@
 node_modules
 package-lock.json
-**/*.marko.js
-static/
-.cache
+*.marko.js
