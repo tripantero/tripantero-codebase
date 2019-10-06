@@ -1,6 +1,7 @@
 require('marko/node-require').install();
 require('marko/express');
 
+
 const express = require('express');
 const app = express();
 const Server = require('http').createServer(app);
@@ -8,9 +9,9 @@ const Server = require('http').createServer(app);
 let isProduction = process.env.NODE_ENV == 'production';
 require('lasso').configure({
     plugins: [
-        'lasso-marko'
+        "lasso-marko"
     ],
-    outputDir: __dirname +'/public/static',
+    outputDir: __dirname +'/public/assets/static',
     bundlingEnabled: isProduction,
     minify: isProduction
 });
@@ -18,7 +19,6 @@ require('lasso').configure({
 if(!isProduction) {
     app.use(require('morgan')('dev'))
 }
-app.use(express.static('public/assets/'))
 module.exports.app = app;
 app.use(require('lasso/middleware').serveStatic());
 
