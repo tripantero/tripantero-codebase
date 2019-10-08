@@ -1,0 +1,7 @@
+
+{
+    "dependencies": [
+        "style.css",
+        "require ./widget"
+    ]
+}

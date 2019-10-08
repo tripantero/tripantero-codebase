@@ -1,8 +1,7 @@
 const app = require('../app').app;
 
-class Api {
-    constructor(url = "/", filename, dirname){
-        this.dirname = dirname;
+class Controller {
+    constructor(url = "/", filename){
         this.middlewares = [];
         this.middlewares.push(require('../middleware/templater'));
         this.method = filename.split('.')[1]
@@ -62,5 +61,5 @@ const caller = () => {
     })
 }
 module.exports = {};
-module.exports.Api = Api;
+module.exports.Controller = Controller;
 module.exports.Caller = caller;

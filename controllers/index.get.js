@@ -1,11 +1,10 @@
-const route = require('./controller').Api;
-let API = new route('/', __filename);
+const Controller = new (require('./Controller').Controller)('/', __filename);
 
-let controller = (request, response)=>{
+let functional = (request, response)=>{
     response.render("index", {
         count: 10
     });
 };
 
-API.setController(controller);
-API.setup();
+Controller.setController(functional);
+Controller.setup();

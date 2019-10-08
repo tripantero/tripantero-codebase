@@ -7,13 +7,16 @@ const app = express();
 const Server = require('http').createServer(app);
 
 let isProduction = process.env.NODE_ENV == 'production';
+
 require('lasso').configure({
-    plugins: [
+    "outputDir": "static",
+    "urlPrefix": __dirname +'/public/assets/static',
+    "minify": isProduction,
+    "bundlingEnabled": isProduction,
+    "fingerprintsEnabled": isProduction,
+    "plugins": [
         "lasso-marko"
-    ],
-    outputDir: __dirname +'/public/assets/static',
-    bundlingEnabled: isProduction,
-    minify: isProduction
+    ]
 });
 
 if(!isProduction) {
