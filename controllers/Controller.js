@@ -48,7 +48,7 @@ class Controller {
 
 const caller = () => {
     const {readdirSync} = require('fs');
-    const restrict = "controller";
+    const restrict = __filename.split(".")[0];
     readdirSync('./controllers').forEach((filename)=>{
         if(filename.indexOf('.js') == -1){
             return;
