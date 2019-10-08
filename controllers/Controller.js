@@ -13,12 +13,6 @@ class Controller {
         this.controller = (request, response) => {
             response.send("it works from: "+this.url);
         };
-        this.verbs = {
-            get: app.get,
-            delete: app.delete,
-            post: app.post,
-            patch: app.patch
-        }
     }
 
     appendMiddleware(middleware){
@@ -36,9 +30,15 @@ class Controller {
             app.use(this.url, middleware);
         })
 
-        if(verbs[method]){
-            verbs[method](this.url, this.controller);
-        }else{
+        if(this.method == "get"){
+            app.get(this.url, this.controller);
+        } else if(this.method == "delete"){
+            app.delete(this.url, this.controller);
+        } else if(this.method == "post"){
+            app.post(this.url, this.controller);
+        } else if(this.method == "patch"){
+            app.patch(this.url, this.controller);
+        } else {
             console.log("\x1b[31m   You are some fucking bitch, you just have four http verbs bitch. go check this out a pil of shit.")
         }
 
