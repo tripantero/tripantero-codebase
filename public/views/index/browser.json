@@ -1,7 +1,8 @@
 
 {
     "dependencies": [
+        "require ./widget",
         "style.css",
-        "require ./widget"
+        "../../assets/scripts/*.js"
     ]
 }
