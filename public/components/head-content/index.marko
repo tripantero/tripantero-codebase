@@ -1,26 +1,6 @@
-class {
-    onCreate(){
-        this.state = {
-            title: "Tripantero"
-        }
-    }
-
-    onMount(){
-        setInterval(()=>{
-            console.log(this.state)
-            if(this.state.title == "Tripantero") {
-                this.setState('title', "Tripantero | Have Message");
-            }else{
-                this.setState('title', "Tripantero");
-            }
-        }, 1000)
-    }
-}
-
-
 <head>
-    <title>${state.title}</title>
-    
-    
+    <title>Tripantero</title>
+    <lasso-resource path="./favicon.ico" var="icon"/>
+    <link rel="shortcut icon" href="${icon.url}">
     <lasso-head/>
 </head>

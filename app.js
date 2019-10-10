@@ -1,6 +1,6 @@
+require('dotenv').config();
 require('marko/node-require').install();
 require('marko/express');
-require('dotenv').config();
 
 const express = require('express');
 const app = express();
