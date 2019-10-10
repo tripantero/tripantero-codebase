@@ -1,0 +1,1 @@
+$_mod.run("/tripantero$1.0.0/public/views/index/index.marko.register");

@@ -1,6 +1,6 @@
 require('marko/node-require').install();
 require('marko/express');
-
+require('dotenv').config();
 
 const express = require('express');
 const app = express();
@@ -25,7 +25,7 @@ if(!isProduction) {
 module.exports.app = app;
 app.use(require('lasso/middleware').serveStatic());
 
-require('./controllers/controller').Caller();
+require('./controllers/Controller').Caller();
 require('./socket').apply(Server);
 
 Server.listen(process.env.PORT || 6007, ()=>{
