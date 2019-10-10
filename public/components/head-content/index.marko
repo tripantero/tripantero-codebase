@@ -1,0 +1,15 @@
+class {
+    onCreate(){
+        this.state = {
+            title: "Tripantero"
+        }
+    }
+}
+
+
+<head>
+    <title>${state.title}</title>
+    <lasso-resource path="./favicon.ico" var="favicon"/>
+    <link rel="shortcut icon" href="${favicon.url}">
+    <lasso-head/>
+</head>
