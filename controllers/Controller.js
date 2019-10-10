@@ -13,7 +13,6 @@ class Controller {
         this.controller = (request, response) => {
             response.send("it works from: "+this.url);
         };
-
     }
 
     appendMiddleware(middleware){
