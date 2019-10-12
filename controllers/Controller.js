@@ -15,7 +15,7 @@ class Controller {
         };
     }
 
-    appendMiddleware(middleware){
+    append(middleware){
         this.middlewares.push(middleware);
     }
 
