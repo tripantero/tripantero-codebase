@@ -1,9 +1,14 @@
 const Controller = new (require('./Controller').Controller)('/login', __filename);
 const jwt = require('jwt-simple');
+const bodyParser = require('bodyParser');
+
+Controller.appendMiddeware(bodyParser.json());
+Controller.appendMiddeware(bodyParser.urlencoded({extended: false}));
 
 let functional = (request, response)=>{
     let encode = jwt.encode({foo: "bar"}, process.env.KEY);
-    response.header('access-token', encode);
+    response.header('x-access-token', encode);
+    response.redirect('/')
 };
 
 Controller.setController(functional);
