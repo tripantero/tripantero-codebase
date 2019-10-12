@@ -43,20 +43,8 @@ class Controller {
         }
 
         console.log("\x1b[32m   Setup "+this.url + " controller successed\x1b[37m");
+        this.midddleware = [];
     }
-}
-
-const caller = () => {
-    const {readdirSync} = require('fs');
-    const restrict = __filename.split(".")[0];
-    readdirSync('./controllers').forEach((filename)=>{
-        if(filename.indexOf('.js') == -1 || filename.indexOf(restrict) != -1){
-            return;
-        }
-        filename = filename.replace('.js', '');
-        require('./'+filename);
-    })
 }
 module.exports = {};
 module.exports.Controller = Controller;
-module.exports.Caller = caller;

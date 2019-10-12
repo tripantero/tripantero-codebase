@@ -5,6 +5,7 @@ require('marko/express');
 const express = require('express');
 const app = express();
 const Server = require('http').createServer(app);
+const session = require('express-session');
 
 let isProduction = process.env.NODE_ENV == 'production';
 
@@ -23,9 +24,16 @@ if(!isProduction) {
     app.use(require('morgan')('dev'))
 }
 module.exports.app = app;
+app.use(session({
+    secret: "Tripantero-c0h7a5i9",
+    resave: false,
+    cookie:{
+        secure: true
+    }
+}))
 app.use(require('lasso/middleware').serveStatic());
 
-require('./controllers/Controller').Caller();
+require('./auxiliary/caller').Caller('controllers', ['Controller']);
 require('./socket').apply(Server);
 
 Server.listen(process.env.PORT || 6007, ()=>{
