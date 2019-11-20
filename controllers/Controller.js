@@ -1,4 +1,5 @@
 const app = require('../app').app;
+const bodyParser = require('body-parser');
 
 class Controller {
     constructor(url = "/", filename){
@@ -15,6 +16,10 @@ class Controller {
         };
     }
 
+    enableBodyparser(){
+        this.append(bodyParser.json());
+        this.append(bodyParser.urlencoded({extended: false}));
+    }
     append(middleware){
         this.middlewares.push(middleware);
     }
