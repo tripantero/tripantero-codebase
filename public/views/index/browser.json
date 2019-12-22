@@ -1,6 +1,5 @@
 {
     "dependencies": [
-        "require ./widget",
         "../../assets/scripts/lazy-images.js"
     ]
 }
