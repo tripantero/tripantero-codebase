@@ -5,31 +5,36 @@ class Model {
     constructor(dbname, schema = new Schema({})) {
         this.dbname = dbname;
         this.database = new dbms({autoload: true, filename: `../database/${dbname}.bin`})
-        this.schema;
+        this.schema = schema;
     }
 
 
-    save(data = this.schema) {
-        if(Array.isArray(data)) {
+    save(data = {}, validate = true) {
+        if(Array.isArray(data) && validate) {
             data.forEach((value)=> {
                 try {
                     this.validate(value);
+                    this.save(value, false)
                 } catch (error) {
                     console.log("Schema error on database: "+this.dbname);
-                    console.log("cannot insert data: "+value);
                 }
             });
         } else {
             try {
-                this.validate(value);
+                if(validate) {
+                    this.validate(data);
+                }
+                this.database.insert(data, (err, _)=> {
+                    if(err) return console.log("error insertion on db: "+this.dbname);
+                })
+                
             } catch (error) {
                 console.log("Schema error on database: "+this.dbname);
-                console.log("cannot insert data: "+value);
             }
         }
     }
 
-    validate(singledata = this.Schema){
+    validate(singledata = {}){
         this.schema.validate(singledata);
     }
 
@@ -66,5 +71,6 @@ class Model {
 
 module.exports = {
     Model: Model,
+    Schema: Schema,
     Optional: Optional
 }
