@@ -1,8 +1,10 @@
-const Controller = new (require('./Controller').Controller)('/', __filename);
+const Controller = new(require('./Controller').Controller)('/', __filename);
 
-let functional = (request, response)=>{
+view = require("../public/views/landing-page/index.marko")
+
+let functional = (request, response) => {
     response.render("index", {
-        count: 10
+        view: view.render({})
     });
 };
 
