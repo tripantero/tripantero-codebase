@@ -11,7 +11,7 @@ class Model {
             this.database = result.database;
         })
     }
-
+    
     connect() {
         return new Promise((resolve, reject)=> {
             dbms.MongoClient.connect(url, {}, (err, result) => {
