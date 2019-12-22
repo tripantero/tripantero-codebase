@@ -20,9 +20,6 @@ class Controller {
         this.append(bodyParser.json());
         this.append(bodyParser.urlencoded({extended: false}));
     }
-    append(middleware){
-        this.middlewares.push(middleware);
-    }
 
     setController(controller){
         this.controller = controller;
