@@ -1,10 +1,10 @@
 # Tripantero
 
-Real project of Tripantero. Don't you dare to use it without our permission.
+Codebase tripantero web apps built on Marko.JS and express
 
 ## Instalation
 ```bash
-git clone https://gitlab.com/tripantero/tripantero.git tripantero
+git clone https://github.com/Satssuki/tripantero.git tripantero
 cd tripantero
 git pull --all
 npm install --save
