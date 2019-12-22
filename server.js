@@ -34,7 +34,6 @@ app.use(session({
 app.use(require('lasso/middleware').serveStatic());
 
 require('./auxiliary/caller').Caller('controllers', ['Controller']);
-require('./socket').apply(Server);
 
 Server.listen(process.env.PORT || 6007, ()=>{
     console.log('Successed running');

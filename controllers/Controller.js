@@ -1,4 +1,4 @@
-const app = require('../app').app;
+const app = require('../server').app;
 const bodyParser = require('body-parser');
 
 class Controller {

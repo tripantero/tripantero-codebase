@@ -2,7 +2,6 @@
 {
     "dependencies": [
         "require ./widget",
-        "style.css",
-        "../../assets/scripts/*.js"
+        "../../assets/scripts/lazy-images.js"
     ]
 }
