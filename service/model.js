@@ -1,13 +1,29 @@
-const dbms = require('nedb');
+const dbms = require('mongodb');
 const { Schema, Optional} = require('tschema');
+const url = "mongodb://localhost:27017"
 
 class Model {
-    constructor(dbname, schema = new Schema({})) {
-        this.dbname = dbname;
-        this.database = new dbms({autoload: true, filename: `../database/${dbname}.bin`})
+    constructor(collectionName, schema = new Schema({})) {
+        this.collectionName = collectionName;
         this.schema = schema;
+        this.connect().then((result) => {
+            this.collection = result.collection;
+            this.database = result.database;
+        })
     }
 
+    connect() {
+        return new Promise((resolve, reject)=> {
+            dbms.MongoClient.connect(url, {}, (err, result) => {
+                if(err) return reject(err);
+                console.log("Connected to collection: "+this.collectionName);
+                resolve({
+                    collection: result.db("tripanterodb").collection(this.collectionName),
+                    database: result
+                });
+            })
+        })
+    }
 
     save(data = {}, validate = true) {
         if(Array.isArray(data) && validate) {
@@ -16,7 +32,7 @@ class Model {
                     this.validate(value);
                     this.save(value, false)
                 } catch (error) {
-                    console.log("Schema error on database: "+this.dbname);
+                    console.log("Schema error on collection: "+this.collectionName);
                 }
             });
         } else {
@@ -24,12 +40,14 @@ class Model {
                 if(validate) {
                     this.validate(data);
                 }
-                this.database.insert(data, (err, _)=> {
-                    if(err) return console.log("error insertion on db: "+this.dbname);
+                console.log("rrrr")
+                this.collection.insert(data, (err, _)=> {
+                    if(err) return console.log("error insertion on collection: "+this.collectionName);
+                    console.log(_)
                 })
                 
             } catch (error) {
-                console.log("Schema error on database: "+this.dbname);
+                console.log("Schema error on database: "+this.collectionName);
             }
         }
     }
@@ -39,34 +57,31 @@ class Model {
     }
 
     findOne(query = {}, callback = (err, docs) => {}) {
-        this.database.findOne(query, callback);
+        this.collection.findOne(query, callback);
     }
 
     find(query = {}, callback = (err, docs) => {}) {
-        this.database.find(query, {}, callback);
+        this.collection.find({}).toArray(callback);
     }
 
     remove(query = {}) {
-        this.database.remove(query, {multi: true}, (err, count) => {
-            if(err) return console.log("error removing on db: "+this.dbname);
-            console.log("removing on db: "+this.dbname +" with count: "+count);
+        this.collection.deleteMany(query, (err, count) => {
+            if(err) return console.log("error removing on collection: "+this.collectionName);
+            console.log("removing on collection: "+this.collectionName +" with count: "+count);
         });
     }
 
-    update(query) {
-        this.database.update(query, {}, {multi: true}, (err, count) => {
-            if(err) return console.log("error updating on db: "+this.dbname);
-            console.log("updating on db: "+this.dbname +" with count: "+count);
+    update(query, records) {
+        this.collection.update(query, records, (err, result) => {
+            if(err) return console.log("error updating on collection: "+this.collectionName);
+            console.log("updating on collection: "+this.collectionName);
         })
     }
 
-    isExist(query, callback = (condition = false)=>{}) {
-        this.database.find(query, {}, (err, docs)=> {
-            if(err) return console.log("error isExist operate on db: "+this.dbname);
-            callback(docs.length > 0);
-        })
+    
+    close() {
+        this.database.close();
     }
-
 }
 
 module.exports = {
