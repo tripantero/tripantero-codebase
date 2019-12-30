@@ -40,7 +40,6 @@ class Model {
                 if(validate) {
                     this.validate(data);
                 }
-                console.log("rrrr")
                 this.collection.insert(data, (err, _)=> {
                     if(err) return console.log("error insertion on collection: "+this.collectionName);
                     console.log(_)
@@ -83,6 +82,10 @@ class Model {
         this.database.close();
     }
 }
+
+var x = new Model("model", new Schema({
+    name: String
+}));
 
 module.exports = {
     Model: Model,
