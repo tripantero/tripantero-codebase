@@ -1,0 +1,14 @@
+.home__leadtext {
+    max-width: 40ch;
+}
+
+.home__getstartedbtn {
+    background: #01b14f;
+}
+
+.home__card {
+    background: #01b14f;
+    box-shadow: 0 10px 15px -3px rgba(1, 177, 80, 0.3),
+        0 4px 6px -2px rgba(1, 177, 79, 0.1);
+    color: #fff;
+}
