@@ -1,0 +1,19 @@
+header  {
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+}
+
+header .tripantero-title {
+    color: #2c3e50;
+}
+
+header .nav-item {
+    margin: 0px 15px;
+    font-weight: bold;
+    color: #5f768d;
+    text-decoration: none;
+}
+
+header .signup-btn {
+    background-color: #01b14f;
+}
