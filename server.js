@@ -11,7 +11,7 @@ let isProduction = process.env.NODE_ENV == 'production';
 
 require('lasso').configure({
     "outputDir": "static",
-    "urlPrefix": __dirname +'/public/assets/static',
+    "urlPrefix": '/public/assets/static',
     "minify": isProduction,
     "bundlingEnabled": isProduction,
     "fingerprintsEnabled": isProduction,
