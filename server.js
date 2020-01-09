@@ -12,7 +12,7 @@ const redisStore = require('connect-redis')(session);
 let isProduction = process.env.NODE_ENV == 'production';
 
 require('lasso').configure({
-    "outputDir": "static",
+    "outputDir": "public/static",
     "urlPrefix": '/public/assets/static',
     "minify": isProduction,
     "bundlingEnabled": isProduction,
