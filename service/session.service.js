@@ -8,7 +8,7 @@ module.exports = new Model('sessioncl', new Schema({
     date: {
         registered: Date,
         lastLogin: Optional(Date),
-        lastVisit: Optional(Date)
+        lastLogout: Optional(Date)
     },
     listEventsCreatedId: Optional([String]),
     listJoinedEventId: Optional([String]),

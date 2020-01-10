@@ -1,13 +1,15 @@
 const Controller = new (require('./Controller').Controller)('/login', __filename);
 const authService = require('../service/session.service');
 const generator = require('../auxiliary/sessionGenerator');
+const validator = require('../middleware/session-validator');
+Controller.middlewares.push(validator);
 Controller.enableBodyparser();
 
 let functional = (request, response) => {
     let sessionID = generator();
     authService.update({
-        email: request.body.email,
-        password: request.body.password
+        email: request.body.email.toLowerCase(),
+        password: request.body.password.toLowerCase()
     }, {
         $set: {
             sessionID: sessionID,
