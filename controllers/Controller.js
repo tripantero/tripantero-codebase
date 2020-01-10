@@ -44,7 +44,7 @@ class Controller {
             console.log("\x1b[31m   You are some fucking bitch, you just have four http verbs bitch. go check this out a pil of shit.")
         }
 
-        console.log("\x1b[32m   Setup "+this.url + " controller successed\x1b[37m");
+        console.log("\x1b[32m   Setup "+this.url + " controller with "+this.method+" method successed\x1b[37m");
         this.midddleware = [];
     }
 }
