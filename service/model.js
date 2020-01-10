@@ -83,10 +83,6 @@ class Model {
     }
 }
 
-var x = new Model("model", new Schema({
-    name: String
-}));
-
 module.exports = {
     Model: Model,
     Schema: Schema,

@@ -11,5 +11,6 @@ module.exports = new Model('sessioncl', new Schema({
         lastVisit: Optional(Date)
     },
     listEventsCreatedId: Optional([String]),
-    listJoinedEventId: Optional([String])
+    listJoinedEventId: Optional([String]),
+    sessionID: Optional(String)
 }));
