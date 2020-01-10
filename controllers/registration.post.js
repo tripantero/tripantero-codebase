@@ -1,10 +1,12 @@
 const Controller = new (require('./Controller').Controller)('/register', __filename);
 const authService = require('../service/session.service');
+const validator = require('../middleware/session-validator');
+Controller.middlewares.push(validator);
 Controller.enableBodyparser();
 
 let functional = (request, response) => {
     if(!request.body.password == request.body.password_confirm) {
-
+        response.send("password confirmation fail");
     }
     let records = {
         username: request.body.name,
@@ -14,7 +16,7 @@ let functional = (request, response) => {
         date: {
             registered: new Date(),
             lastLogin: new Date(),
-            lastVisit: new Date()
+            lastLogout: new Date()
         },
         listEventsCreatedId: [],
         listJoinedEventId: [],
