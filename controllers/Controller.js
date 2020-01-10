@@ -17,8 +17,8 @@ class Controller {
     }
 
     enableBodyparser(){
-        this.middlewares.append(bodyParser.json());
-        this.middlewares.append(bodyParser.urlencoded({extended: false}));
+        this.middlewares.push(bodyParser.json());
+        this.middlewares.push(bodyParser.urlencoded({extended: false}));
     }
 
     setController(controller){
