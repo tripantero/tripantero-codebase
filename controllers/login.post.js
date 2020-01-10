@@ -1,15 +1,25 @@
 const Controller = new (require('./Controller').Controller)('/login', __filename);
-const jwt = require('jwt-simple');
-Controller.middlewares.push( (req, res, next) => {
-    console.log("From middleware")
-    next();
-});
-
+const authService = require('../service/session.service');
+const validator = require('../middleware/session-validator');
+Controller.middlewares.push(validator);
 
 let functional = (request, response)=>{
-    let encode = jwt.encode({foo: "bar"}, process.env.KEY);
-    response.header('x-access-token', encode);
-    response.redirect('/')
+    let data = {
+        username: request.body.username,
+        role: request.body.role,
+        email: request.body.email,
+        password: request.body.password,
+        date: {
+            registered: new Date(),
+            lastLogin: "",
+            lastVisit: ""
+        },
+        listEventsCreatedId: [],
+        listJoinedEventId: [],
+    }
+
+    authService.save(data);
+    response.redirect('/home')
 };
 
 Controller.setController(functional);
