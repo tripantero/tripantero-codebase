@@ -1,0 +1,48 @@
+<div class="event-card shadow hover:shadow-lg rounded">
+  <!-- Leading section -->
+  <div class="__outer-layer w-full lg:flex cursor-pointer" on-click("collapseCard")>
+    <div class="__image h-48 lg:h-auto lg:w-64 hover:w-1/2 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://picsum.photos/1000')"/>
+    <div class="__lead-detail border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+      <div class="mb-8">
+        <div class="text-black font-bold text-xl mb-2">Can coffee make you a better developer?</div>
+        <p class="text-grey-darker text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="flex">
+          <img class="w-10 h-10 rounded-full mr-4" src="https://i.pravatar.cc/300" alt="Avatar of Jonathan Reinink"/>
+          <div class="text-sm hidden sm:block">
+            <p class="text-black leading-none">Jonathan Reinink</p>
+            <p class="text-grey-dark">Aug 18</p>
+          </div>
+        </div>
+        <div>
+          <!-- TODO: :style="`transform: rotate(${rotation}deg);transition: 0.3s ease-in-out;` -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down outline-none" style=("transform: rotate(" + state.rotation + "deg);transition:0.3s ease-in-out;")>
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Detail section -->
+  <!-- TODO: :class="state.isCollapsed ? 'h-auto' : 'h-0'" -->
+  <div style="transition: 0.3s" class=(state.isCollapsed ? ' __bottom-layer w-full shadow overflow-hidden h-auto' : ' __bottom-layer w-full shadow overflow-hidden h-0')>
+    <div class="__lead-detail border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-gray-200 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+      <div class="mb-8">
+        <div class="text-black font-bold text-xl mb-2">Can coffee make you a better developer?</div>
+        <p class="text-grey-darker text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+        <p class="text-grey-darker text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptatum assumenda necessitatibus tenetur dolore neque quis doloribus id enim tempore quam magnam magni modi a est, nihil ducimus porro optio!Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ipsam, unde in quae laboriosam voluptatem, atque eveniet corrupti excepturi nostrum numquam nihil aliquid officiis est eos inventore labore soluta quas?</p>
+      </div>
+      <div class="flex justify-between items-center pt-12">
+        <div class="flex">
+          <img class="w-10 h-10 rounded-full mr-4" src="https://i.pravatar.cc/300" alt="Avatar of Jonathan Reinink"/>
+          <div class="text-sm hidden sm:block">
+            <p class="text-black leading-none">Jonathan Reinink</p>
+            <p class="text-grey-dark">Aug 18</p>
+          </div>
+        </div>
+        <button class="join px-10 py-2 rounded text-white">Join Event</button>
+      </div>
+    </div>
+  </div>
+</div>
