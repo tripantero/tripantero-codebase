@@ -17,7 +17,7 @@ class Controller {
     }
 
     enableBodyparser(){
-        this.append(bodyParser.json());
+        this.middlewares.append(bodyParser.json());
         this.append(bodyParser.urlencoded({extended: false}));
     }
 
@@ -27,7 +27,7 @@ class Controller {
     
     setup(){
         console.log("Applying middleware in "+this.url);
-        console.log("   there is "+ this.middlewares.length +" exist midddleware.");
+        console.log("   there is "+ this.middlewares.length +" exist middlewares.");
         this.middlewares.forEach((middleware)=>{
             app.use(this.url, middleware);
         })
