@@ -1,0 +1,11 @@
+.event-card {
+    transition: 0.1s;
+}
+
+.event-card .join {
+    background: #01b14f;
+}
+
+.event-card__bottom-layer {
+    transition: 0.2s;
+}
