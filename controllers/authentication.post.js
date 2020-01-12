@@ -1,8 +1,8 @@
 const Controller = new (require('./Controller').Controller)('/login', __filename);
 const authService = require('../service/session.service');
 const generator = require('../auxiliary/sessionGenerator');
-const validator = require('../middleware/session-validator');
-Controller.middlewares.push(validator);
+const direct = require('../middleware/session-direct');
+Controller.middlewares.push(direct);
 Controller.enableBodyparser();
 
 let functional = (request, response) => {
