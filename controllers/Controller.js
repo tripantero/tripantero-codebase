@@ -27,7 +27,7 @@ class Controller {
     
     setup(){
         console.log("Applying middleware in "+this.url);
-        console.log("   there is "+ this.middlewares.length +" exist middlewares.");
+        console.log("   there is "+ this.middlewares.length +" exist middleware.");
         this.middlewares.forEach((middleware)=>{
             app.use(this.url, middleware);
         })
@@ -45,7 +45,7 @@ class Controller {
         }
 
         console.log("\x1b[32m   Setup "+this.url + " controller with "+this.method+" method successed\x1b[37m");
-        this.midddleware = [];
+        this.middlewares = [];
     }
 }
 module.exports = {};
