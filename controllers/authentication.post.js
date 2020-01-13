@@ -17,7 +17,7 @@ let functional = (request, response) => {
         }
     });
     request.session.key = sessionID;
-    response.redirect('/home');
+    response.redirect('/events');
 };
 
 Controller.setController(functional);
