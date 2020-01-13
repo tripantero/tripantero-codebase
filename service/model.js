@@ -45,7 +45,7 @@ class Model {
                     if(err) return console.log("error insertion on collection: "+this.collectionName);
                     console.log(_)
                 })
-                
+
             } catch (error) {
                 console.log("Schema error on database: "+this.collectionName);
             }
@@ -78,7 +78,7 @@ class Model {
         })
     }
 
-    
+
     close() {
         this.database.close();
     }
