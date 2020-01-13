@@ -3,14 +3,14 @@ module.exports = class {
     this.state = {
       rotation: 0,
       isCollapsed: false,
-      isIconRotated: true
+      isIconRotated: false
     };
   }
 
   // Rotates the icon
   rotateIcon(x1, x2) {
     this.state.isIconRotated = !this.state.isIconRotated;
-    if (!this.state.isIconRotated) {
+    if (this.state.isIconRotated) {
       this.state.rotation = x1;
     } else {
       this.state.rotation = x2;
@@ -20,5 +20,10 @@ module.exports = class {
   collapseCard() {
     this.rotateIcon(-180, 0);
     this.state.isCollapsed = !this.state.isCollapsed;
+  }
+
+  get event() {
+    const {events} = this.input;
+    return JSON.parse(events);
   }
 };

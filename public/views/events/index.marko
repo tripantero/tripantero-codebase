@@ -5,9 +5,17 @@
     <noscript>Please enable Javascript for better experience</noscript>
     <navbar/>
     <div id="app-root">
-      <event-list-page/>
+      <div class="events">
+        <main-container>
+          <h1 class="text-center text-4xl md:text-5xl font-bold mb-6">Events</h1>
+          <div class="w-full mb-12">
+            <for|event| of=input.events>
+              <event-card events=JSON.stringify(event)/>
+            </for>
+          </div>
+        </main-container>
+      </div>
     </div>
-    <main-footer />
     <lasso-body/>
   </body>
 </html>
