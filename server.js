@@ -6,11 +6,13 @@ const express = require('express');
 const app = express();
 const Server = require('http').createServer(app);
 const session = require('express-session');
+const client = require('redis').createClient();
+const redisStore = require('connect-redis')(session);
 
 let isProduction = process.env.NODE_ENV == 'production';
 
 require('lasso').configure({
-    "outputDir": "static",
+    "outputDir": "public/static",
     "urlPrefix": '/public/assets/static',
     "minify": isProduction,
     "bundlingEnabled": isProduction,
@@ -29,7 +31,14 @@ app.use(session({
     resave: false,
     cookie:{
         secure: true
-    }
+    },
+    saveUninitialized: false,
+    store: new redisStore({
+        host: "localhost",
+        port: 6379,
+        client: client,
+        ttl: 86400
+    })
 }))
 app.use(require('lasso/middleware').serveStatic());
 

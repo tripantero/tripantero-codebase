@@ -1,0 +1,36 @@
+<div class="signup">
+  <div class="container mx-auto md:px-16 lg:px-32">
+    <div class="flex justify-center">
+      <div class="w-full max-w-lg p-5 md:shadow-md rounded-lg">
+        <h1 class="text-4xl font-bold mb-6">Sign Up</h1>
+        <form class="text-left" action="/register" method="POST">
+          <label for="name">Full name</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" placeholder="Riley Reid"/>
+          <label for="email">E-Mail</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" id="email" type="text" placeholder="example@email.com"/>
+          <label for="email">Password</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" id="password" type="password" placeholder="Must have atleast 6 characters"/>
+          <label for="email">Confirm Password</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirm" id="password_confirm" type="password" placeholder="Must have atleast 6 characters"/>
+          <div class="flex justify-center items-center">
+            <label>Role</label>
+          </div>
+          <div class="flex justify-around items-center">
+            <input type="radio" name="role" id="businessman" value="businessman" class="form-radio"/>
+            <input type="radio" name="role" id="localpeople" value="localpeople" class="form-radio"/>
+          </div>
+          <div class="flex justify-around items-center">
+            <label for="businessman">Businessman</label>
+            <label for="localpeople">Local People</label>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="mt-5 px-10 py-2 rounded text-white">Sign Up</button>
+          </div>
+          <div class="text-center pt-4">
+            <a href="/login" class="text-center text-md text-blue-400">Already have an account?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
