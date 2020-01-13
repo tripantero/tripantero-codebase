@@ -1,6 +1,6 @@
 module.exports = (request, response, next) => {
     if(request.session.key) {
-        response.redirect("/home")
+        response.redirect("/events")
     } else {
         next();
     }
