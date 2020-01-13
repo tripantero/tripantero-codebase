@@ -28,11 +28,8 @@ if(!isProduction) {
 module.exports.app = app;
 app.use(session({
     secret: "Tripantero-c0h7a5i9",
-    resave: false,
-    cookie:{
-        secure: true
-    },
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     store: new redisStore({
         host: "localhost",
         port: 6379,
