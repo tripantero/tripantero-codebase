@@ -22,7 +22,7 @@ let functional = (request, response) => {
         listJoinedEventId: [],
         sessionID: ""
     }
-    authService.findOne({"email": "danielarya175@gmail.com"}, (err, res)=>{
+    authService.findOne({"email": records.email}, (err, res)=>{
         if(err) return err;
         if(res == null) {
             authService.save(records);
