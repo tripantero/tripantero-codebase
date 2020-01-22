@@ -73,7 +73,7 @@ class Model {
     update(query, records) {
         this.collection.update(query, records, (err, result) => {
             if(err) return console.log("error updating on collection: "+this.collectionName);
-            console.log("updating on collection: "+this.collectionName);
+            console.log(`updating on collection: ${this.collectionName} with result: ${result}`);
         })
     }
 
