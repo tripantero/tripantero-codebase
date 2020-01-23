@@ -15,9 +15,15 @@ let functional = (request, response) => {
             sessionID: sessionID,
             lastLogin: new Date()
         }
+    }, (count) => {
+        if(count.result.nModified > 0) {
+            request.session.key = sessionID;
+            return response.redirect("/events");
+        }
+        response.redirect("/login")
+        
     });
-    request.session.key = sessionID;
-    response.redirect('/events');
+    
 };
 
 Controller.setController(functional);
