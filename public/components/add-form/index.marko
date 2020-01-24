@@ -1,0 +1,44 @@
+
+<form class="w-full">
+    <div class="flex flex-wrap -mx-3 mb-3">
+      <div class="w-full px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+          Judul
+        </label>
+        <input autocomplete="off" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Silvi" name="title">
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-3">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Isi aktivitas
+        </label>
+        <textarea autocomplete="off" class="w-full text-lg appearance-none block bg-gray-200 text-gray-700 resize-none border border-red-500  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="content"></textarea>
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-3">
+        <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                Tanggal/hari
+            </label>
+            <input autocomplete="off" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Kamis, 20/05/2019">
+        </div>
+    </div>
+    <div class="flex w-full items-center justify-center bg-grey-lighter mb-6">
+        <label class="border border-red-500 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white mr-8">
+            <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+            </svg>
+            <span class="mt-2 text-base leading-normal">Select a file</span>
+            <input type='file' class="hidden" autocomplete="off"/>
+        </label>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-3">
+        <div class="w-full px-3 mb-6 md:mb-0">
+            <button class="font-bold py-2 px-4 rounded inline-flex bg-white border border-red-500" type="submit">
+                <span>Submit</span>
+            </button>
+        </div>
+      </div>
+  </form>

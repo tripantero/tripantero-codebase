@@ -6,8 +6,12 @@ Controller.middlewares.push(validator);
 
 let functional = (request, response) => {
     Event.find({}, (err, events) => {
-        console.log(err)
-        response.render("events", {events});
+        if(err) {
+            return console.log("Error on events.js");
+        }
+        response.render("events", {
+            events: events
+        });
     });
 };
 
