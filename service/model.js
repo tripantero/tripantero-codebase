@@ -60,7 +60,7 @@ class Model {
     }
 
     find(query = {}, callback = (err, docs) => {}) {
-        this.collection.find({}).toArray(callback);
+        this.collection.find(query).toArray(callback);
     }
 
     remove(query = {}) {
