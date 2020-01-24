@@ -2,7 +2,6 @@ const Controller = new(require('./Controller').Controller)('/events', __filename
 const Event = require('../service/event.service');
 const validator = require('../middleware/session-validator');
 Controller.middlewares.push(validator);
-Controller.middlewares.push(require('../middleware/username-templater'));
 
 
 let functional = (request, response) => {

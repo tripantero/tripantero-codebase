@@ -2,7 +2,7 @@ const Controller = new (require('./Controller').Controller)('/logout', __filenam
 const authService = require('../service/session.service');
 
 let functional = (request, response) => {
-    let sessionID = request.body.key;
+    let sessionID = request.session.key;
     authService.update({
         sessionID: sessionID
     }, {
