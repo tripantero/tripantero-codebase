@@ -3,7 +3,6 @@ const session = require('../service/session.service');
 module.exports = (request, response, next) => {
     response.render = (directory, data = {}) => {
         let template = require(`../public/views/${directory}/index.marko`);
-        
         getUsername(request.session.key).then((username)=>{
             response.marko(template, {
                 username: username,

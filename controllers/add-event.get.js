@@ -3,8 +3,7 @@ const validator = require('../middleware/session-validator');
 Controller.middlewares.push(validator);
 
 let functional = (request, response) => {
-    response.render("add", {
-    });
+    response.render("add");
 };
 
 Controller.setController(functional);
