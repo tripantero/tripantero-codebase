@@ -5,7 +5,7 @@ module.exports = new Model('event', new Schema({
     title: String,
     description: String,
     image_url: Optional(String),
-    timeHeld: Date,
+    timeHeld: String,
     date_created: Date,
     participantId: Optional([String]),
     peopleId: Optional([String])

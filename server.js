@@ -38,7 +38,7 @@ app.use(session({
     })
 }))
 app.use(require('lasso/middleware').serveStatic());
-
+app.use('/images', express.static("public/assets/images/"))
 require('./auxiliary/caller').Caller('controllers', ['Controller']);
 
 Server.listen(process.env.PORT || 6007, ()=>{
