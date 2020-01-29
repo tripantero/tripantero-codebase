@@ -1,3 +1,7 @@
+body {
+    background: #f5f5f5;
+}
+
 button[type="submit"] {
     background: #01b14f;
 }

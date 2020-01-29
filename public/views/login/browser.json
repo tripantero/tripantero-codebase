@@ -1,6 +1,5 @@
 {
     "dependencies": [
-        "../../assets/scripts/lazy-images.js",
         "../../assets/style/style.css"
     ]
 }

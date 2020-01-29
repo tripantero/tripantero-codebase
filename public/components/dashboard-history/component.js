@@ -1,8 +1,8 @@
 module.exports = class {
   onCreate() {
     this.state = {
+      check: false,
       rotation: 0,
-      isCollapsed: false,
       isIconRotated: false
     };
   }
@@ -17,12 +17,13 @@ module.exports = class {
     }
   }
 
-  collapseCard() {
+  openHistory() {
     this.rotateIcon(-180, 0);
-    this.state.isCollapsed = !this.state.isCollapsed;
+    this.state.check = !this.state.check;
+    console.log(this.input.events);
   }
 
-  get event() {
+  get events() {
     const {events} = this.input;
     return events;
   }

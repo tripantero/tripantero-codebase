@@ -1,7 +1,7 @@
 <macro name="card-leading">
   <div class="__outer-layer w-full lg:flex cursor-pointer" on-click("collapseCard")>
     <div class="__image h-48 lg:h-auto lg:w-64 hover:w-1/2 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('${component.event.image_url}')"/>
-    <div class="__lead-detail border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between w-full leading-normal">
+    <div class="__lead-detail bg-white rounded p-4 flex flex-col justify-between w-full leading-normal">
       <div class="mb-8">
         <div class="text-black font-bold text-xl mb-2">${component.event.title}</div>
         <p class="text-grey-darker text-base">${component.event.description}</p>
@@ -26,7 +26,7 @@
 
 <macro name="card-detail">
   <div style="transition: 0.3s" class=(state.isCollapsed ? " __bottom-layer w-full shadow overflow-hidden h-auto" : " __bottom-layer w-full shadow overflow-hidden h-0")>
-    <div class="__lead-detail border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-gray-200 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+    <div class="__lead-detail border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-gray-200 rounded-b p-4 flex flex-col justify-between leading-normal">
       <div class="mb-8">
         <p class="text-grey-darker text-base">${component.event.description}</p>
       </div>

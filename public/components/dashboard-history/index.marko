@@ -1,0 +1,42 @@
+<macro name="dashboard-trips">
+  <div class="w-full md:w-1/3 rounded-lg block md:inline-block mx-2 my-2 shadow-md">
+    <div class="trips-card rounded-lg cursor-pointer" on-click("openHistory")>
+      <div class="flex justify-between">
+        <div class="text-white px-5 py-5">
+          <p class="block text-base">Joined Events</p>
+          <p class="block text-6xl py-1 font-bold">${component.events.length}</p>
+        </div>
+        <div class="px-4 py-4">
+          <img src="../../assets/icons/OutlineWhte.svg" alt="transport" class="w-24"/>
+        </div>
+      </div>
+      <div class="font-montserrat text-white focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down outline-none h-12 inline" style=("transform: rotate(" + state.rotation + "deg);transition:0.3s ease-in-out;")>
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </div>
+    <div class=(state.check ? "mx-3 my-3 block" : "hidden")>
+      <div class="text-base text-gray-600 bg-green-100 rounded-lg py-1 mb-5">
+        <ul class="list-disc mx-6 text-justify align-baseline">
+          <for|event| of=component.events>
+            <li class="mx-1">
+              <div class="text-green-500">${event.title}</div>
+              <div class="text-right">${event.timeHeld}</div>
+              <table class="w-full">
+                <tr>
+                  <td class>
+                    <div class="bg-gray-400 h-px leading-px">&zwnj;</div>
+                  </td>
+                </tr>
+              </table>
+            </li>
+          </for>
+        </ul>
+      </div>
+    </div>
+  </div>
+</macro>
+<div class="flex justify-start mt-20">
+  <dashboard-trips/>
+</div>

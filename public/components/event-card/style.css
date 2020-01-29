@@ -1,5 +1,14 @@
+body {
+    background: #f5f5f5;
+}
+
 .event-card {
     transition: 0.1s;
+    box-shadow: 0px 3px 15px rgb(215, 226, 240);
+}
+
+.event-card:hover {
+    box-shadow: 0px 3px 15px rgb(181, 190, 202);
 }
 
 .event-card .join {

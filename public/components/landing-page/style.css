@@ -1,3 +1,7 @@
+body {
+    background: #f5f5f5;
+}
+
 .home__leadtext {
     max-width: 40ch;
 }
