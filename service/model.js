@@ -42,7 +42,6 @@ class Model {
                 }
                 this.collection.insert(data, (err, _)=> {
                     if(err) return console.log("error insertion on collection: "+this.collectionName);
-                    console.log(_)
                 })
 
             } catch (error) {

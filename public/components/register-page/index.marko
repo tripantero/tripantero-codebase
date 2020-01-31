@@ -5,19 +5,25 @@
         <h1 class="text-4xl font-bold mb-6">Sign Up</h1>
         <form class="text-left" action="/register" method="POST">
           <label for="name">Full name</label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" placeholder="Riley Reid"/>
+          <input autocomplete="off" class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" placeholder="Riley Reid"/>
           <label for="email">E-Mail</label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" id="email" type="text" placeholder="example@email.com"/>
+          <input autocomplete="off" class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" id="email" type="text" placeholder="example@email.com"/>
           <label for="email">Password</label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" id="password" type="password" placeholder="Must have atleast 6 characters"/>
+          <input autocomplete="off" class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" id="password" type="password" placeholder="Must have atleast 6 characters"/>
           <label for="email">Confirm Password</label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirm" id="password_confirm" type="password" placeholder="Must have atleast 6 characters"/>
+          <input autocomplete="off" class="shadow appearance-none border rounded w-full py-2 px-3 mb-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirm" id="password_confirm" type="password" placeholder="Must have atleast 6 characters"/>
           <div class="flex justify-center items-center">
             <label>Role</label>
           </div>
           <div class="flex justify-around items-center">
-            <input type="radio" name="role" id="businessman" value="businessman" class="form-radio"/>
-            <input type="radio" name="role" id="localpeople" value="localpeople" class="form-radio"/>
+            <div class="tooltip">
+              <input type="radio" name="role" id="businessman" value="businessman" class="form-radio"/>
+              <span class="tooltiptext">Choose this if you want to make a event, or participating the event, its ease just click "Join Event".</span>
+            </div>
+            <div class="tooltip">
+              <input type="radio" name="role" id="localpeople" value="localpeople" class="form-radio"/>
+              <span class="tooltiptext">Choose this if you want to contributing to an event as volunteer or something related, get more income from this position.</span>
+            </div>
           </div>
           <div class="flex justify-around items-center">
             <label for="businessman">Businessman</label>
