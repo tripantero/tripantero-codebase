@@ -21,6 +21,7 @@ let functional = (request, response) => {
             event_author: ""+docs._id,
             title: request.body.title,
             description: request.body.content,
+            place: request.body.places,
             image_url: `/images/${filename}`,
             timeHeld: request.body.timeHeld,
             date_created: Date.now(),

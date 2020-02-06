@@ -8,6 +8,7 @@ module.exports = (request, response, next) => {
             response.marko(template, {
                 id: datas._id,
                 username: datas.username,
+                allowAdd: datas.role == "businessman",
                 ...data
             });
         })
@@ -20,19 +21,22 @@ function getUsername(key) {
         session.findOne({sessionID: key || "only null"}, (err, docs)=> {
             if(err) {
                 console.log("Error here please fix me");
-            }
+            }            
             let data = {
                 _id: null,
-                username: null
+                username: null,
+                role: null
             };
             if(docs == null) {
                 return resolve(data);
             }
             let username = docs.username || null;
             let id = docs._id || null;
+            let role = docs.role || null;
             data = {
                 _id: id,
-                username: username
+                username: username,
+                role: role
             };
             resolve(data);
         })
