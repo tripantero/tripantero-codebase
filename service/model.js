@@ -17,7 +17,6 @@ class Model {
             dbms.MongoClient.connect(url, {}, (err, result) => {
                 if(err) return reject(err);
                 console.log("Connected to collection: "+this.collectionName);
-                result.
                 resolve({
                     collection: result.db("heroku_gmk4fgjw").collection(this.collectionName),
                     database: result
