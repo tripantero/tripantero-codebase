@@ -1,6 +1,6 @@
 const dbms = require('mongodb');
 const { Schema, Optional} = require('tschema');
-const url = "mongodb://localhost:27017"
+const url = process.env.MONGODB_URI
 
 class Model {
     constructor(collectionName, schema = new Schema({})) {
@@ -17,8 +17,9 @@ class Model {
             dbms.MongoClient.connect(url, {}, (err, result) => {
                 if(err) return reject(err);
                 console.log("Connected to collection: "+this.collectionName);
+                result.
                 resolve({
-                    collection: result.db("tripanterodb").collection(this.collectionName),
+                    collection: result.db("heroku_gmk4fgjw").collection(this.collectionName),
                     database: result
                 });
             })

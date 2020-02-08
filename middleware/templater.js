@@ -4,7 +4,7 @@ module.exports = (request, response, next) => {
     response.render = (directory, data = {}) => {
         let template = require(`../public/views/${directory}/index.marko`);
         getUsername(request.session.key).then((datas)=>{
-            request.session._id = data._id
+            request.session._id = datas._id
             response.marko(template, {
                 id: datas._id,
                 username: datas.username,
@@ -18,10 +18,7 @@ module.exports = (request, response, next) => {
 
 function getUsername(key) {
     return new Promise((resolve, reject) => {
-        session.findOne({sessionID: key || "only null"}, (err, docs)=> {
-            if(err) {
-                console.log("Error here please fix me");
-            }            
+        session.findOne({sessionID: key || "only null"}, (err, docs)=> {    
             let data = {
                 _id: null,
                 username: null,
