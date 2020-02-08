@@ -3,10 +3,12 @@ const session = require('../service/session.service');
 module.exports = (request, response, next) => {
     response.render = (directory, data = {}) => {
         let template = require(`../public/views/${directory}/index.marko`);
-        
-        getUsername(request.session.key).then((username)=>{
+        getUsername(request.session.key).then((datas)=>{
+            request.session._id = datas._id
             response.marko(template, {
-                username: username,
+                id: datas._id,
+                username: datas.username,
+                allowAdd: datas.role == "businessman",
                 ...data
             });
         })
@@ -16,12 +18,24 @@ module.exports = (request, response, next) => {
 
 function getUsername(key) {
     return new Promise((resolve, reject) => {
-        session.findOne({sessionID: key || "only null"}, (err, docs)=> {
-            if(err) {
-                console.log("Error here please fix me");
+        session.findOne({sessionID: key || "only null"}, (err, docs)=> {    
+            let data = {
+                _id: null,
+                username: null,
+                role: null
+            };
+            if(docs == null) {
+                return resolve(data);
             }
-            let data = docs || {username: null};
-            resolve(data.username);
+            let username = docs.username || null;
+            let id = docs._id || null;
+            let role = docs.role || null;
+            data = {
+                _id: id,
+                username: username,
+                role: role
+            };
+            resolve(data);
         })
     })
 }

@@ -1,0 +1,25 @@
+
+
+$ const min = (x, y) => {
+    if(x < y) {
+        return x;
+    }
+    return y;
+}
+
+$ const max = (x, y) => {
+    if(x < y) {
+        return y;
+    }
+    return x;
+}
+
+<if(input.events.length > 0)>
+    <for|i| from=0 to=max(parseInt(input.events.length / 7) - 1, 0) step=1>
+    <div class="block md:flex md:-mx-2">
+        <for|j| from=(i * 7) to=(i * 7 + min(input.events.length - 7 * i, 6) - 1) step=1>
+            <event-card  id=input.events[j]._id image_url=input.events[j].image_url title=input.events[j].title place=input.events[j].place timeHeld=input.events[j].timeHeld/> 
+        </for>
+    </div>
+    </for>
+</if>
