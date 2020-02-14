@@ -7,6 +7,7 @@ const Server = require('http').createServer(app);
 const session = require('express-session');
 const client = require('redis').createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
 const redisStore = require('connect-redis')(session);
+const PORT = process.env.PORT || 6007;
 
 let isProduction = process.env.NODE_ENV == 'production';
 
@@ -37,6 +38,6 @@ app.use(require('lasso/middleware').serveStatic());
 app.use('/images', express.static("public/assets/images/"))
 require('./auxiliary/caller').Caller('controllers', ['Controller']);
 
-Server.listen(process.env.PORT || 6007, ()=>{
-    console.log('Successed running');
+Server.listen(PORT, ()=>{
+    console.log('Successed running on port: '+PORT);
 })
