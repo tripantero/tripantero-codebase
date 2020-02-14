@@ -18,8 +18,7 @@ class Model {
                 if(err) return reject(err);
                 console.log("Connected to collection: "+this.collectionName);
                 resolve({
-                    // collection: result.db("heroku_gmk4fgjw").collection(this.collectionName),
-                    collection: result.db("tripanterodb").collection(this.collectionName),
+                    collection: result.db("heroku_gmk4fgjw").collection(this.collectionName),
                     database: result
                 });
             })
