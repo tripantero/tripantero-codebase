@@ -4,7 +4,8 @@ module.exports = (request, response, next) => {
     response.render = (directory, data = {}) => {
         let template = require(`../public/views/${directory}/index.marko`);
         getUsername(request.session.key).then((datas)=>{
-            request.session._id = datas._id
+            request.session._id = datas._id;
+            request.session.role = datas.role
             response.marko(template, {
                 id: datas._id,
                 username: datas.username,

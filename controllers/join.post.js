@@ -22,12 +22,12 @@ let functional = (request, response) => {
                     resolve();
                 }, 200);
             }).then(() => {
-                console.log(role == "businessman");
                 if(role == "businessman") {
                     docs.participantId.push(request.session._id);
                     response.redirect("/events")
                 } else {
                     docs.peopleId.push(request.session._id);
+                    response.redirect("/events")
                 }
                 Event.save(docs)
             })

@@ -20,9 +20,8 @@ Controller.setController(functional);
 Controller.setup();
 
 function validateEventauthor(id, docs) {
-    if(! (id == docs._id)) {
-        docs.allowedJoin = true;
-    } else {
+    docs.allowedJoin = true;
+    if((id == docs.event_author) || (docs.participantId.indexOf(id) != -1) || (docs.peopleId.indexOf(id) != -1)) {
         docs.allowedJoin = false;
     }
     return new Promise((resolve, reject) => {
