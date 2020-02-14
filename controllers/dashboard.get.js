@@ -1,11 +1,14 @@
-const Controller = new(require('./Controller').Controller)('/dashboard', __filename);
+const Controller = new(require('./Controller').Controller)('/dashboard?', __filename);
 const validator = require('../middleware/session-validator');
 Controller.middlewares.push(validator);
 
 
 let functional = (request, response) => {
+        
     if(request.session.role == "businessman") {
-        return response.render("dashboard/businessman");
+        return response.render("dashboard/businessman", {
+            link: request.query.page || "joined"
+        });
     } else if(request.session.role == "localpeople"){
         return response.render("dashboard/localpeople");
     }

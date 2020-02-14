@@ -11,17 +11,17 @@ let functional = (request, response) => {
     new Promise((resolve, reject) => {
         let query = {_id : new ObjectId(request.session._id)};
         session.findOne(query, (err, docs) => {
-            resolve(docs.role);
+            resolve(docs);
         })
-    }).then((role) => {
+    }).then(({role, _id}) => {
         let query = {_id : new ObjectId(request.params.eventId)};
         Event.findOne(query, (err, docs) => {
             new Promise((resolve, reject) => {
                 Event.remove(query)
                 setTimeout(() => {
-                    resolve();
+                    resolve(docs._id);
                 }, 200);
-            }).then(() => {
+            }).then((event_id) => {
                 if(role == "businessman") {
                     docs.participantId.push(request.session._id);
                     response.redirect("/events")
@@ -29,6 +29,16 @@ let functional = (request, response) => {
                     docs.peopleId.push(request.session._id);
                     response.redirect("/events")
                 }
+                session.collection.update({_id: new ObjectId(_id)}, {
+                    $push: {
+                        "listJoinedEventId": event_id
+                    }
+                }, (err, result)=> {
+                    if(err) {
+                        return console.error(err)
+                    }
+                    console.log(result)
+                })
                 Event.save(docs)
             })
         });

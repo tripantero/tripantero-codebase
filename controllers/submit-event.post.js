@@ -25,7 +25,7 @@ let functional = (request, response) => {
             image_url: `/images/${filename}`,
             timeHeld: request.body.timeHeld,
             date_created: Date.now(),
-            participantId: [],
+            participantId: [request.session._id],
             peopleId: []
         };
 
