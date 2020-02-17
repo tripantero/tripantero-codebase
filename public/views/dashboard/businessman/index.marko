@@ -4,16 +4,16 @@
   <body class="antialiased font-sans">
     <noscript>Please enable Javascript for better experience</noscript>
     <navbar username=input.username allowAdd=input.allowAdd/>
-
     <div class="container mx-auto px-4 sm:px-8">
+        <dashboard-business tabs=input.tabs highlight=input.highlight/>
         <if(input.link == "created")>
             <div>Hey there</div>
         </if>
         <else-if(input.link == "request")>
-            <business-volunteer-request/>
+            <business-volunteer-request data=input.linkData/>
         </else-if>
         <else>
-            <div>What's up?</div>
+            <business-event-joined data=input.linkData/>
         </else>
     </div>
     <lasso-body/>

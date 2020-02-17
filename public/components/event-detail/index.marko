@@ -1,7 +1,5 @@
 <div class="font-sans">
     <div class="bg-white max-w-lg mx-auto my-8 border">
-      <a href="https://uxplanet.org/redesign-neiman-marcus-ios-app-5a0db3119b36"
-        class="block border-grey-light no-underline text-black">
         <img src="${input.data.image_url}"/>
         <div class="p-4">
           <h2 class="font-medium text-lg mb-2">${input.data.title}</h2>
@@ -16,14 +14,18 @@
             ${input.data.description}
           </p>
         </div>
-      </a>
       <div class="flex pt-4 px-4">
         <div class="px-2 pt-2 flex-grow">
           <footer class="border-t border-grey-lighter text-sm flex items-center">
             <if(input.data.allowedJoin)>
-              <form method="post" action="/join/${input.data._id}" class="items-center block no-underline flex px-4 py-2 hover:bg-grey-lighter">
+              <form method="post" action="/join/${input.data._id}" class="items-center block no-underline flex px-4 py-2 hover:bg-grey-lighter block">
+                $ let join_label = "Ikuti acara";
+                <if(input.data.role == "localpeople")>
+                  $ join_label = "Daftar untuk relawan";
+                  <checkbox/>
+                </if>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                  Join event
+                  ${join_label}
                 </button>
               </form>
             </if>

@@ -9,6 +9,7 @@ let functional = (request, response) => {
     eventService.findOne({_id: new ObjectId(request.params.eventId)}, (err, docs) => {
         if(err) return response.send("Error on event get");
         validateEventauthor(request.session._id, docs).then((datas) => {
+            datas.role = request.session.role;
             response.render("event", {
                 ...datas
             })
@@ -21,7 +22,7 @@ Controller.setup();
 
 function validateEventauthor(id, docs) {
     docs.allowedJoin = true;
-    if((id == docs.event_author) || (docs.participantId.indexOf(id) != -1) || (docs.peopleId.indexOf(id) != -1)) {
+    if((docs.participantId.indexOf(id) != -1) || (docs.peopleId.indexOf(id) != -1)) {
         docs.allowedJoin = false;
     }
     return new Promise((resolve, reject) => {
