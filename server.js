@@ -22,9 +22,6 @@ require('lasso').configure({
     ]
 });
 
-if(!isProduction) {
-    app.use(require('morgan')('dev'))
-}
 module.exports.app = app;
 app.use(session({
     secret: "Tripantero-c0h7a5i9",

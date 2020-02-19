@@ -26,8 +26,7 @@ class Controller {
     }
     
     setup(){
-        console.log("Applying middleware in "+this.url);
-        console.log("   there is "+ this.middlewares.length +" exist middleware.");
+
         this.middlewares.forEach((middleware)=>{
             app.use(this.url, middleware);
         })
@@ -43,8 +42,12 @@ class Controller {
         } else {
             console.log("\x1b[31m   You are some fucking bitch, you just have four http verbs bitch. go check this out a pil of shit.")
         }
-
-        console.log("\x1b[32m   Setup "+this.url + " controller with "+this.method+" method successed\x1b[37m");
+        if(process.env.NODE_ENV == "production") {
+            console.log("Applying middleware in "+this.url);
+            console.log("   there is "+ this.middlewares.length +" exist middleware.");
+            console.log("\x1b[32m   Setup "+this.url + " controller with "+this.method+" method successed\x1b[37m");
+        }
+        
         this.middlewares = [];
     }
 }
