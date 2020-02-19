@@ -1,0 +1,27 @@
+11520:C 19 Feb 2020 11:04:57.628 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+11520:C 19 Feb 2020 11:04:57.628 # Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=11520, just started
+11520:C 19 Feb 2020 11:04:57.628 # Warning: no config file specified, using the default config. In order to specify a config file use ./redis-server /path/to/redis.conf
+11520:M 19 Feb 2020 11:04:57.629 # You requested maxclients of 10000 requiring at least 10032 max file descriptors.
+11520:M 19 Feb 2020 11:04:57.629 # Server can't set maximum open files to 10032 because of OS error: Operation not permitted.
+11520:M 19 Feb 2020 11:04:57.629 # Current maximum open files is 10000. maxclients has been reduced to 9968 to compensate for low ulimit. If you need higher maxclients increase 'ulimit -n'.
+11520:M 19 Feb 2020 11:04:57.630 * Running mode=standalone, port=6379.
+11520:M 19 Feb 2020 11:04:57.630 # Server initialized
+11520:M 19 Feb 2020 11:04:57.630 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+11520:M 19 Feb 2020 11:04:57.630 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+11520:M 19 Feb 2020 11:04:57.639 * DB loaded from disk: 0.008 seconds
+11520:M 19 Feb 2020 11:04:57.639 * Ready to accept connections
+11520:M 19 Feb 2020 12:04:29.555 * 100 changes in 300 seconds. Saving...
+11520:M 19 Feb 2020 12:04:29.567 * Background saving started by pid 14420
+14420:C 19 Feb 2020 12:04:29.631 * DB saved on disk
+14420:C 19 Feb 2020 12:04:29.632 * RDB: 0 MB of memory used by copy-on-write
+11520:M 19 Feb 2020 12:04:29.668 * Background saving terminated with success
+11520:M 19 Feb 2020 12:48:44.610 * 100 changes in 300 seconds. Saving...
+11520:M 19 Feb 2020 12:48:44.611 * Background saving started by pid 18427
+18427:C 19 Feb 2020 12:48:44.661 * DB saved on disk
+18427:C 19 Feb 2020 12:48:44.661 * RDB: 0 MB of memory used by copy-on-write
+11520:M 19 Feb 2020 12:48:44.711 * Background saving terminated with success
+11520:signal-handler (1582092192) Received SIGTERM scheduling shutdown...
+11520:M 19 Feb 2020 13:03:12.479 # User requested shutdown...
+11520:M 19 Feb 2020 13:03:12.479 * Saving the final RDB snapshot before exiting.
+11520:M 19 Feb 2020 13:03:13.445 * DB saved on disk
+11520:M 19 Feb 2020 13:03:13.445 # Redis is now ready to exit, bye bye...

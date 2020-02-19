@@ -14,7 +14,7 @@ class Model {
     
     connect() {
         return new Promise((resolve, reject)=> {
-            dbms.MongoClient.connect(url, {}, (err, result) => {
+            dbms.MongoClient.connect(url, {useUnifiedTopology: true}, (err, result) => {
                 if(err) return reject(err);
                 console.log("Connected to collection: "+this.collectionName);
                 resolve({

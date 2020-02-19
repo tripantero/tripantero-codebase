@@ -29,15 +29,18 @@ let functional = (request, response) => {
                     });
                 })
             } else if(link == "request") {
+                getVolunteering(request.session._id, (records) => {
+                    resolve({
+                        linkData: records
+                    })
+                })
+            } else if(link == "created") {
                 resolve({
                     linkData: []
                 })
             }
         }).then((data)=> {
-            globalData = {
-                ...globalData,
-                linkData: data.linkData
-            }
+            globalData.linkData = data.linkData
             response.render("dashboard/businessman", globalData);
         })
     } else if(request.session.role == "localpeople"){
@@ -82,24 +85,56 @@ function getJoinedRecords(userid, callback = (records = [])=>{}) {
 function getVolunteering(userid, callback = (records = [])=>{}) {
     let query = {_id: new ObjectId(userid)};
     sessionService.collection.findOne(query, (err, resultFromSession) => {
-        if(resultFromSession.listJoinedEventId.length == 0) {
+        let length  = resultFromSession.listEventsCreatedId;
+        if(length == 0) {
             callback([]);
         }else{
+            for (let index = 0; index < length; index++) {
+                resultFromSession.listEventsCreatedId[index] = new ObjectId(resultFromSession.listEventsCreatedId[index]);
+            }
             query = {
                 _id: {
-                    $in: resultFromSession.listJoinedEventId
+                    $in: resultFromSession.listEventsCreatedId
                 }
             }
             eventService.collection.find(query).toArray().then((result)=> {
-                let records = []
-                result.forEach((rec) => {
-                    records.push({
-                        title: rec.title,
-                        time: rec.timeHeld,
-                        participantCount: rec.participantId.length
+                new Promise((resolve, reject) => {
+                    let records = [];
+                    result.forEach((eventElement, index)=> {
+                        if(eventElement.peopleId.length > 0) {
+                            sessionService.collection.find({
+                                listJoinedEventId: {
+                                    $elemMatch: {
+                                        eventId: new ObjectId(eventElement._id)
+                                    }
+                                }
+                            }).toArray().then((data)=> {
+                                data.forEach(({username, listJoinedEventId}) =>{
+                                    let rowData = {
+                                        username: username,
+                                        eventTitle: result[index].title
+                                    }
+                                    rowData.volunteeringType = (() => {
+                                        for(let i = 0; i< listJoinedEventId.length; i++) {
+                                            if((""+listJoinedEventId[i].eventId) == (""+eventElement._id)) {
+                                                return listJoinedEventId[i].type;
+                                            }
+                                        }
+                                    })()
+                                    records.push(rowData);
+                                })
+                                if(index == result.length - 1) {
+                                    setTimeout(()=> {
+                                        resolve(records);
+                                    }, 100);
+                                }
+                            })
+
+                        }
                     })
+                }).then((value = []) => {
+                    callback(value);
                 })
-                callback(records);
             })
         }
     });

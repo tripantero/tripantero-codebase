@@ -4,7 +4,8 @@
             <table class="min-w-full leading-normal">
                 <dashboard-table-head columns=["Name", "Event Title", "Volunteering type", "Status"] />
                 <tbody>
-                    <dashboard-table-body actions=[{label: "Activate", color: "text-green-900"}] data=[]/>
+                    $ let actions = ((len) => {let arr = []; for(let i = 0; i< len; i++) {arr.push({ label: 'Approved', color: 'text-green-900' });} return arr})(input.data.length);
+                    <dashboard-table-body actions=actions data=input.data/>
                 </tbody>
             </table>
         </div>
