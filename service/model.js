@@ -17,8 +17,9 @@ class Model {
             dbms.MongoClient.connect(url, {useUnifiedTopology: true}, (err, result) => {
                 if(err) return reject(err);
                 console.log("Connected to collection: "+this.collectionName);
+                let databaseName = url.split('/').reverse()[0]
                 resolve({
-                    collection: result.db("heroku_gmk4fgjw").collection(this.collectionName),
+                    collection: result.db(databaseName).collection(this.collectionName),
                     database: result
                 });
             })
