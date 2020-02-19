@@ -35,9 +35,11 @@ let functional = (request, response) => {
                     })
                 })
             } else if(link == "created") {
-                resolve({
-                    linkData: []
-                })
+                getEventCreated(request.session._id, (records) => {
+                    resolve({
+                        linkData: records 
+                    })
+                });
             }
         }).then((data)=> {
             globalData.linkData = data.linkData
@@ -136,8 +138,27 @@ function getVolunteering(userid, callback = (records = [])=>{}) {
                     callback(value);
                 })
             })
-        }
+        }ObjectId()
     });
+}
+
+
+function getEventCreated(userid, callback = (records = [])=>{}) {
+    let query = {event_author: userid};
+
+    eventService.collection.find(query).toArray().then((element)=> {
+        let records = [];
+        element.forEach(({title, place, timeHeld, participantId, peopleId})=> {
+            records.push({
+                title: title,
+                place: place,
+                time : timeHeld,
+                participantCount: participantId.length,
+                peopleId: peopleId.length
+            })
+        });
+        callback(records)
+    })
 }
 
 Controller.setController(functional);
